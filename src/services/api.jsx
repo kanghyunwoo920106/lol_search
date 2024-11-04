@@ -14,7 +14,7 @@ export const fetchChampions = async () => {
     const language = "ko_KR";   // 언어 설정
   
     try {
-      const response = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion.json`);
+      const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/13.20.1/data/ko_KR/champion.json`);
       const data = await response.json();
       return Object.values(data.data); // 챔피언 목록을 배열 형태로 반환
     } catch (error) {
@@ -29,7 +29,7 @@ export const fetchChampionDetails = async (championId) => {
   const language = "ko_KR";
 
   try {
-    const response = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion/${championId}.json`);
+    const response = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion/${championId}.json`);
     const data = await response.json();
     return data.data[championId]; // 특정 챔피언 상세 정보 반환
   } catch (error) {

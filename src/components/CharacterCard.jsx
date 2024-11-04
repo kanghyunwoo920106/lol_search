@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function CharacterCard({character, version}) {
     console.log(character);
@@ -6,9 +7,11 @@ function CharacterCard({character, version}) {
 
     return (
         <div className='character-card'>
-            <img src={imageUrl} alt={character.name} className='character-image' />
-            <h2>{character.name}</h2>
-            <p>{character.description}</p>
+            <Link to={`/champion/${character.key}`}>
+                <img src={imageUrl} alt={character.name} className='character-image' />
+                <h2>{character.name}</h2>
+                <p>{character.description}</p>
+            </Link>
         </div>
     )
 }

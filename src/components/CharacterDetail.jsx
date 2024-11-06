@@ -16,7 +16,6 @@ const CharacterDetail = () => {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-Riot-Token': API_KEY
                     }
                 });
                 const data = await response.json();

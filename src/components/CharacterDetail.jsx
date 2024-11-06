@@ -13,7 +13,7 @@ const CharacterDetail = () => {
     
             try {
                 const response = await fetch(API_URL, {
-                    method: "GET",
+                    method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
                         'X-Riot-Token': API_KEY

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 const CharacterDetail = () => {
     const { championId } = useParams();
     const [champion, setChampion] = useState(null);
-    const API_KEY = 'RGAPI-48068de1-8b45-40ef-a63f-3f79896be1fb'
+    const API_KEY = 'RGAPI-ee3ff5c3-bdb7-4b3b-8786-f3a0a823a9fe'
 
     useEffect(() => {
         const fetchChampionDetail = async () => {

@@ -5,19 +5,27 @@ import { useParams } from 'react-router-dom';
 const CharacterDetail = () => {
     const { championId } = useParams();
     const [champion, setChampion] = useState(null);
+    const API_KEY = 'RGAPI-48068de1-8b45-40ef-a63f-3f79896be1fb'
 
     useEffect(() => {
         const fetchChampionDetail = async () => {
-            const API_URL = `https://ddragon.leagueoflegends.com/cdn/13.20.1/data/ko_KR/champion/${championId}.json`;
+            const API_URL = `/api/fetchChampionDetail?championId=${championId}`; // Vercel의 API 엔드포인트로 변경
+    
             try {
-                const response = await fetch(API_URL);
+                const response = await fetch(API_URL, {
+                    method: "GET",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Riot-Token': API_KEY
+                    }
+                });
                 const data = await response.json();
                 setChampion(data.data[championId]);
             } catch (error) {
                 console.error("Failed to fetch champion detail:", error);
             }
         };
-
+    
         fetchChampionDetail();
     }, [championId]);
 

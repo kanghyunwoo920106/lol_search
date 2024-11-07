@@ -2,6 +2,7 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
 
+
 function CharacterList({ characters, version }) {
     return (
         <div className="character-list space-y-4">

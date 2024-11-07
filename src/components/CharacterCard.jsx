@@ -19,7 +19,7 @@ function CharacterCard({ character, version }) {
                 <img
                     src={imageUrl}
                     alt={character.name}
-                    className="object-cover w-full h-full"
+                    className="object-contain w-full h-full"
                 />
             </div>
             <h2 className="mt-2 text-xl font-bold text-center">

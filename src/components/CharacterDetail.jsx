@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchChampionDetails } from '../services/api';
 
 const CharacterDetail = () => {
     const { championId } = useParams();
     const [champion, setChampion] = useState(null);
     const [isImageLoaded, setIsImageLoaded] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);
+    const navigate = useNavigate(); // navigate 훅을 사용하여 페이지 이동
 
     useEffect(() => {
         const fetchChampionDetail = async () => {
@@ -32,14 +34,29 @@ const CharacterDetail = () => {
         fetchChampionDetail();
     }, [championId]);
 
+    const handleCardClick = () => {
+        setIsFlipped(!isFlipped); // 클릭 시 카드 회전 상태 토글
+    };
+
+    const handleGoBack = () => {
+        navigate(-1); // 이전 페이지로 이동
+    };
+
     if (!champion) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900 text-gray-200">
+            <div className="absolute top-4 left-4">
+                {/* 뒤로가기 버튼 (화살표 아이콘 사용) */}
+                <i onClick={handleGoBack} className="fas fa-arrow-left mr-2 text-3xl"></i> {/* 화살표 아이콘 */}
+            </div>
             <div className="card-container">
-                <div className="card">
+                <div
+                    className={`card ${isFlipped ? 'flipped' : ''}`}
+                    onClick={handleCardClick}
+                >
                     <div className="card-front">
                         <h1 className="text-3xl font-bold text-center mb-2">
                             {champion.name}
@@ -62,6 +79,11 @@ const CharacterDetail = () => {
                                 onLoad={() => setIsImageLoaded(true)}
                             />
                         </div>
+                        <div className="text-center">
+                            <button className="px-4 py-2 mt-2 font-semibold text-white bg-blue-600 rounded hover:bg-blue-500 focus:outline-none">
+                                CLICK!
+                            </button>
+                        </div>
                     </div>
                     <div className="card-back">
                         <p className="text-gray-300 mb-4 leading-relaxed">
@@ -69,7 +91,7 @@ const CharacterDetail = () => {
                         </p>
                         <div className="text-center">
                             <button className="px-4 py-2 mt-2 font-semibold text-white bg-blue-600 rounded hover:bg-blue-500 focus:outline-none">
-                                More Details
+                                CLICK!
                             </button>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ body {
   flex-wrap: wrap;
   gap: 16px;
   padding: 16px;
+  padding-top: 60px;
 }
 
 .search-bar input {
@@ -46,8 +47,8 @@ body {
   transition: transform 0.8s; /* 회전 애니메이션 */
 }
 
-.card:hover {
-  transform: rotateY(180deg); /* 마우스 오버 시 뒷면으로 회전 */
+.card.flipped {
+  transform: rotateY(180deg); /* isFlipped가 true일 때 카드 회전 */
 }
 
 .card-front,
@@ -73,3 +74,12 @@ body {
   background-color: #4a5568; /* 뒷면 배경 */
   transform: rotateY(180deg); /* 뒷면이 180도 돌아가도록 설정 */
 }
+
+.search-bar {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+

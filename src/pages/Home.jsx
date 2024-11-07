@@ -26,7 +26,9 @@ function Home() {
                         method: 'GET',
                         headers: { 'Content-Type': 'application/json' },
                     });
-                    const responseData = await response.json();
+                    const responseData = await response;
+                    // data를 배열로 변환
+
                     data = responseData.data;
                 } else {
                     // 로컬에서는 services/api.js의 함수 호출
